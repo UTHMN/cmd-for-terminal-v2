@@ -1,0 +1,2 @@
+import cowsay
+cowsay.cow(str(ext_param))
