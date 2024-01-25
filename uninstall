@@ -1,0 +1,11 @@
+import os
+import shutil
+
+cmd = os.listdir("PyMrk/Snippets")
+
+for i in range(len(cmd)):
+    if not cmd[i] == "installer" and not cmd[i] == "quit" and not cmd[i] == "exit" and not cmd[i] == "uninstall" and not cmd[i] == "export":
+        try:
+            os.remove(f"PyMrk/Snippets/{cmd[i]}")
+        except IsADirectoryError:
+            shutil.rmtree(f"PyMrk/Snippets/{cmd[i]}")

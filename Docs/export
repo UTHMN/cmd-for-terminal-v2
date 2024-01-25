@@ -1,0 +1,6 @@
+Supported operating systems:
+    [All Platform]
+
+About:
+    Takes all files in PyMrk/Snippets and copys them into PyMrk/Snippets/Export
+    for carrying over to another pc or repository

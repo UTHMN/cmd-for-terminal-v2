@@ -1,0 +1,11 @@
+Supported operating systems:
+    [All platform]
+
+About:
+    Runs python code given
+
+Example:
+    input:
+        debug print(1 + 2)
+    output:
+        3

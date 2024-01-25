@@ -1,0 +1,11 @@
+Supported operating systems:
+    [Platform]
+
+About:
+    Installs commands from a git repsitory
+
+Example:
+    input:
+        pkg https://github.com/UTHMN/cmd-for-terminal-v2
+    output:
+        (downloaded files and put them in PyTerm/Snippets and PyTerm/Docs)

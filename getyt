@@ -2,20 +2,30 @@ import re
 from pytube import *
 from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
 import os
+import sys
 
 def Download():
     try:
-        link = ext_param[0]
+        if len(ext_param) == 0:
+            print("error: no link, refusing to download")
+            sys.exit()
+        elif len(ext_param) == 1:
+            print("error: no paramater, defaulting to -va")
+            global link
+            link = ext_param[0]
+        elif len(ext_param) == 2:
+            global choice
+            if ext_param[1] == "-a":
+                choice = "Audio"
+            elif ext_param[1] == "-v":
+                choice = "Video"
+            elif ext_param[1] == "-va" or ext_param[1] == "-av":
+                choice = "Video + Audio"
+            else:
+                choice = "Video + Audio"
+        else:
+            print("error: too many or invalid number of paramaters")
         
-        print()
-        
-        if ext_param[1] == "-a":
-            choice = "Audio"
-        elif ext_param[1] == "-v":
-            choice = "Video"
-        elif ext_param[1] == "-va" or ext_param[1] == "-av":
-            choice = "Video + Audio"
-
         if choice.lower() == "video + audio":
             youtubeObject = YouTube(link)
             youtubeObject = youtubeObject.streams.get_highest_resolution()

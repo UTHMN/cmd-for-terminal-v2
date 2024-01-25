@@ -1,0 +1,34 @@
+Supported operating systems:
+    [All Platform]
+
+About:
+    Downloads a youtube video from a given link into youtube_export.mp4
+    Always downloads highest quality
+
+    paramater 1 = link
+    paramater 2 = mode
+
+    For the link (param 1), use a full link, e.g. https://www.youtube.com/watch?v=dB_lsiZwyis
+
+    For the mode (param 2), either write -av or -va for audio and video, -v for video only and
+    -a for audio only, case does not matter
+
+    With -av/-va the original audio and video files will be discarded permanentley after being merged
+    into youtube_export.mp4
+
+    With no second paramater it will default to -va
+    With no first paramater it will refuse
+
+Example:
+    input:
+        downloading video+audio:
+            getyt https://www.youtube.com/watch?v=dB_lsiZwyis -va
+            OR
+            getyt https://www.youtube.com/watch?v=dB_lsiZwyis -av
+        downloading video:
+            getyt https://www.youtube.com/watch?v=dB_lsiZwyis -v
+        downloading audio:
+            getyt https://www.youtube.com/watch?v=dB_lsiZwyis -a
+
+    output:
+        (youtube_export.mp4)

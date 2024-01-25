@@ -1,0 +1,20 @@
+Supported operating systems:
+    [All Platform]
+
+About:
+    Enter a phrase after cowsay to print a cow saying your prompt
+
+Example:
+    input:
+        cowsay moo
+    output:
+          ___
+        | moo |
+          ===
+              \
+               \
+                ^__^
+                (oo)\_______
+                (__)\       )\/\
+                    ||----w |
+                    ||     ||

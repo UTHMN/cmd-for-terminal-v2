@@ -1,0 +1,11 @@
+Supported operating systems:
+    [All Platform]
+
+About:
+    Runs the command in your native terminal (powershell, cmd, bash, ect)
+
+Example:
+    input:
+        !$ echo hi
+    output:
+        hi
