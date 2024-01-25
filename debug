@@ -1,0 +1,2 @@
+Running = True
+exec(ext_param[0])

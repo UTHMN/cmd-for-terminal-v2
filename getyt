@@ -1,0 +1,68 @@
+import re
+from pytube import *
+from moviepy.editor import VideoFileClip, AudioFileClip, concatenate_videoclips
+import os
+
+def Download():
+    try:
+        link = ext_param[0]
+        
+        print()
+        
+        if ext_param[1] == "-a":
+            choice = "Audio"
+        elif ext_param[1] == "-v":
+            choice = "Video"
+        elif ext_param[1] == "-va" or ext_param[1] == "-av":
+            choice = "Video + Audio"
+
+        if choice.lower() == "video + audio":
+            youtubeObject = YouTube(link)
+            youtubeObject = youtubeObject.streams.get_highest_resolution()
+            video = YouTube(f"{link}")
+            vtitle = re.sub(r'[^\w]', ' ', video.title) # Removes symbols
+
+            stream = video.streams.filter(only_video=True).first()
+            stream.download(filename=f"{vtitle}.mp4")
+            stream = video.streams.filter(only_audio=True).first()
+            stream.download(filename=f"{vtitle}.mp3")
+
+            title = "youtube_export"
+            # Open the video and audio
+            video_clip = VideoFileClip(f"{vtitle}.mp4")
+            audio_clip = AudioFileClip(f"{vtitle}.mp3")
+            final_clip = video_clip.set_audio(audio_clip)
+            final_clip.write_videofile(title + ".mp4")
+
+            files = [f"{vtitle}.mp4", f"{vtitle}.mp3", "youtube_exportTEMP_MPY_wvf_snd.mp3"]
+            
+            for i in files:
+                os.remove(i)
+
+        elif choice.lower() == "video":
+            youtubeObject = YouTube(link)
+            youtubeObject = youtubeObject.streams.get_highest_resolution()
+            video = YouTube(f"{link}")
+            vtitle = re.sub(r'[^\w]', ' ', video.title) # Removes symbols
+
+            stream = video.streams.filter(only_video=True).first()
+            stream.download(filename=f"{vtitle}.mp4")
+
+        elif choice.lower() == "audio":
+            youtubeObject = YouTube(link)
+            youtubeObject = youtubeObject.streams.get_highest_resolution()
+            video = YouTube(f"{link}")
+            vtitle = re.sub(r'[^\w]', ' ', video.title) # Removes symbols
+
+            stream = video.streams.filter(only_audio=True).first()
+            stream.download(filename=f"{vtitle}.mp3")
+
+        else:
+            print("invalid mode")
+
+        print("The download has been completed successfully")
+
+    except Exception as error:
+        print(f"An error has occurred: {error}")
+
+Download()

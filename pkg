@@ -1,0 +1,20 @@
+import git
+import os
+import shutil
+
+repo_name = ext_param[0].split('.git')[0].split('/')[-1]
+os.mkdir(f"./PyMrk/Snippets/{repo_name}")
+repo = git.Repo.clone_from(ext_param[1], f"./PyMrk/Snippets/{repo_name}")
+folder = os.listdir(f"./PyMrk/Snippets/{repo_name}")
+
+for i in folder:
+    shutil.move(f"./PyMrk/Snippets/{repo_name}/{i}", "./PyMrk/Snippets")
+
+def delete_folder(folder_path):
+    try:
+        shutil.rmtree(folder_path)
+    except OSError as e:
+        print(f"Error: {e}")
+
+os.removedirs(f"./PyMrk/Snippets/{repo_name}")
+delete_folder("./PyMrk/Snippets/.git")

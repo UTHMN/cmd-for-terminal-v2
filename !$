@@ -1,0 +1,2 @@
+import os
+os.system(ext_param[0])
